@@ -1,0 +1,18 @@
+.footer {
+    margin-top: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #a1989869;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+}
+
+.footer p {
+    letter-spacing: 4px;
+}
+
+.footer p span {
+    color: red;
+}
