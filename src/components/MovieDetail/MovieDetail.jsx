@@ -6,7 +6,7 @@ import { setSelectedMovie } from '../../Redux Store/MovieSlice';
 import Moviecard from '../MovieCard/Moviecard';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 
 function MovieDetail() {
   const selectedMovie = useSelector((state) => state.movie.selectedMovie);
@@ -16,6 +16,16 @@ function MovieDetail() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  useEffect(()=> {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  },[location]);
+
+
   useEffect(() => {
     const getMovie = async () => {
       try {
@@ -40,7 +50,7 @@ function MovieDetail() {
   }, [dispatch, movId]);
 
   if (isLoading) return <div className="load"><div className="loader"></div></div>;
-  if (error || !selectedMovie) return <div>No movie selected</div>;
+  if (error || !selectedMovie) return <div className='empty'><h2>No Movie Found</h2></div>;
   
   return (
       <div className='details-container'>

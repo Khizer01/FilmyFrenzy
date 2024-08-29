@@ -10,7 +10,7 @@ export default function Nav({ search, setSearch, searchMovie}) {
 
     return (
         <nav>
-            <h1 onClick={handleClick}>FilmFrenzy</h1>
+            <h1 onClick={handleClick}>FilmyFrenzy</h1>
             <div className="search">
                 <input
                     type="text"

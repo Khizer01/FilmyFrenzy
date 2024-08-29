@@ -4,20 +4,29 @@ import AppRoutes from './components/AppRoutes';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearMovie, getMovieFail, getMovieStart, getMovieSuccess } from './Redux Store/MovieSlice';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 
 function App() {
     const [search, setSearch] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(()=> {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    },[location]);
 
     useEffect(() => {
       searchMovie('Superman');
-    }, []);
+    },[]);
   
     const searchMovie = async (title) => {
       dispatch(clearMovie());
